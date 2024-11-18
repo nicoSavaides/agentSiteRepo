@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Mission</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .message {
+            margin-top: 50px;
+            font-size: 1.2em;
+        }
+
+        .button-container {
+            margin-top: 50px;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 20px;
+            background-color: #f39c12;
+            border: none;
+            cursor: pointer;
+            color: white;
+            font-weight: bold;
+        }
+
+        button:active {
+            background-color: #e67e22;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="message">
+        <p>Agent, before proceeding, ensure you are in a secure and quiet location where you <br> will not be disturbed. The transmission contains classified information, and it is imperative <br> you hear it in full without interruption. Do not play this message in public or unsecured environments.</p>
+    </div>
+
+    <div class="button-container">
+        <button id="playButton" onclick="playMessage()">Play Message</button>
+    </div>
+
+    <script>
+        function playMessage() {
+            var audio = new Audio('your-audio-file.mp3');
+            audio.play();
+
+            document.getElementById("playButton").style.display = "none"; // Hide the button after click
+        }
+    </script>
+
+</body>
+</html>
