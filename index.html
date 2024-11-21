@@ -1,64 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agent Mission</title>
+    <title>Agent Welcome Page</title>
     <style>
         body {
+            font-family: Arial, sans-serif;
             background-color: black;
             color: white;
-            font-family: Arial, sans-serif;
             text-align: center;
-            margin: 0;
-            padding: 0;
+            margin: 30px;
         }
 
-        .message {
-            margin-top: 50px;
-            font-size: 1.2em;
+        #loginSection {
+            margin-top: 300px;
         }
 
-        .button-container {
+        #audioSection {
+            display: none;
             margin-top: 50px;
+        }
+
+        #audioSection button {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        #greetingSection {
+            margin-top: 300px;
+            line-height: 1.5;
+        }
+
+        h1 {
+            margin-top: 60px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px;
+        }
+
+        input {
+            background-color: #333;
+            color: white;
+            border: 1px solid white;
+            border-radius: 4px;
         }
 
         button {
-            padding: 15px 30px;
-            font-size: 20px;
-            background-color: #f39c12;
+            background-color: white;
+            color: black;
             border: none;
+            border-radius: 4px;
             cursor: pointer;
-            color: white;
-            font-weight: bold;
         }
 
-        button:active {
-            background-color: #e67e22;
+        button:hover {
+            background-color: #ddd;
+        }
+
+        #errorMessage {
+            color: red;
         }
     </style>
 </head>
 <body>
-
-    <div class="message">
-        <p>Agent, before proceeding, ensure you are in a secure and quiet location where you <br> will not be disturbed. The transmission contains classified information, and it is imperative <br> you hear it in full without interruption. Do not play this message in public or unsecured environments.</p>
+    <h1>Agent Portal</h1>
+    <div id="loginSection">
+        <p>Please enter your Agent ID below to access your message:</p>
+        <input type="text" id="agentIdInput" placeholder="Enter Agent ID">
+        <button onclick="validateAgent()">Submit</button>
+        <p id="errorMessage" class="hidden">Invalid Agent ID. Please try again.</p>
     </div>
-
-    <div class="button-container">
-        <button id="playButton" onclick="playMessage()">Play Message</button>
+    <div id="greetingSection" class="hidden">
+        <p id="greetingMessage"></p>
+        <div id="audioSection">
+            <button onclick="playAudio()" aria-label="Play Mission Briefing Audio">Play Audio</button>
+            <audio id="agentAudio" src="agentAudio.wav"></audio>
+        </div>
     </div>
 
     <script>
-        function playMessage() {
-            var audio = new Audio('your-audio-file.mp3');
-            audio.play();
+        const agentData = {
+            "4769": "Dimitri",
+            "2019": "Ben",
+        };
 
-            document.getElementById("playButton").style.display = "none"; // Hide the button after click
+        function validateAgent() {
+            const agentId = document.getElementById('agentIdInput').value.trim();
+            const errorMessage = document.getElementById('errorMessage');
+            const loginSection = document.getElementById('loginSection');
+            const greetingSection = document.getElementById('greetingSection');
+            const greetingMessage = document.getElementById('greetingMessage');
+
+            if (agentId in agentData) {
+                errorMessage.classList.add('hidden');
+                loginSection.classList.add('hidden');
+                greetingSection.classList.remove('hidden');
+                greetingMessage.innerHTML = `Hello Agent ${agentData[agentId]}, before proceeding, ensure you are in a secure 
+                quiet location without interruptions. This transmission contains classified information and can only be played once.`;
+                document.getElementById('audioSection').style.display = "block";
+            } else {
+                errorMessage.classList.remove('hidden');
+            }
         }
-    </script>
 
+        function playAudio() {
+            const audio = document.getElementById('agentAudio');
+            const button = document.querySelector('#audioSection button');
+            audio.play();
+            button.disabled = true;
+            button.textContent = "Audio Played";
+        }
+
+        const audio = document.getElementById('agentAudio');
+        audio.onerror = () => alert("Failed to load the audio. Please check your file path or format.");
+    </script>
 </body>
 </html>
