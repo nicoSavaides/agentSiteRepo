@@ -10,11 +10,13 @@
             background-color: black;
             color: white;
             text-align: center;
-            margin: 30px;
+            margin: 0;              /* Remove any margins from the body */
+            padding: 0;             /* Remove padding from the body */
+            position: relative;
         }
 
         #loginSection {
-            margin-top: 300px;
+            margin-top: 300px;  /* Keep this as it is */
         }
 
         #audioSection {
@@ -28,12 +30,15 @@
         }
 
         #greetingSection {
-            margin-top: 300px;
+            margin-top: 300px;  /* Keep this as it is */
             line-height: 1.5;
         }
 
         h1 {
-            margin-top: 60px;
+            margin-top: -50px;  /* Move the header upwards */
+            text-align: center; /* Center the header horizontally */
+            padding: 0;         /* Ensure no padding is applied */
+            margin-bottom: 10px; /* Optionally add space below the header */
         }
 
         .hidden {
@@ -68,10 +73,26 @@
         #errorMessage {
             color: red;
         }
+
+        /* Positioning the image slightly to the left of the title */
+        #logo {
+            position: relative;
+            top: 22px;
+            left: 0;
+            width: 100px; /* Adjust the size of the logo */
+            height: auto;
+            margin-right: 370px; /* Move logo slightly left by using negative margin */
+        }
     </style>
 </head>
 <body>
-    <h1>Agent Portal</h1>
+    <!-- Embedding the image in the top-left corner -->
+    <img id="logo" src="AgencyLogoBlack.jpg" alt="Agent Logo" />
+
+    <h1 style="word-spacing: 6px;">TIA Agent Portal</h1>
+
+
+
     <div id="loginSection">
         <p>Please enter your Agent ID below to access your message:</p>
         <input type="text" id="agentIdInput" placeholder="Enter Agent ID">
@@ -89,7 +110,11 @@
     <script>
         const agentData = {
             "4769": "Dimitri",
-            "2019": "Ben",
+	    "5082": "Anthe",
+	    "1024": "Christo",
+	    "1892": "Lena", 
+	    "7041": "Andriana",
+	    "4412": "Glenn"
         };
 
         function validateAgent() {
@@ -104,7 +129,7 @@
                 loginSection.classList.add('hidden');
                 greetingSection.classList.remove('hidden');
                 greetingMessage.innerHTML = `Hello Agent ${agentData[agentId]}, before proceeding, ensure you are in a secure 
-                quiet location without interruptions. This transmission contains classified information and can only be played once.`;
+                quiet location <br> without interruptions. This transmission contains classified information and can <br> only be played once.`;
                 document.getElementById('audioSection').style.display = "block";
             } else {
                 errorMessage.classList.remove('hidden');
@@ -114,9 +139,18 @@
         function playAudio() {
             const audio = document.getElementById('agentAudio');
             const button = document.querySelector('#audioSection button');
+            
+            // Play the audio
             audio.play();
+            
+            // Disable the button and change its text
             button.disabled = true;
             button.textContent = "Audio Played";
+            
+            // Listen for the audio to end
+            audio.onended = () => {
+                // Once the audio finishes, the button text remains "Audio Played"
+            };
         }
 
         const audio = document.getElementById('agentAudio');
