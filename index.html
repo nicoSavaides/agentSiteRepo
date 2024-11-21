@@ -163,8 +163,7 @@
                 errorMessage.classList.add('hidden');
                 loginSection.classList.add('hidden');
                 greetingSection.classList.remove('hidden');
-                greetingMessage.innerHTML = `Hello Agent ${agentData[agentId]}, before proceeding, ensure you <br> are in a secure 
-                quiet location without interruptions. <br> This transmission contains classified information and <br> can only be played once.`;
+                greetingMessage.innerHTML = `Hello Agent ${agentData[agentId]}. Before proceeding, ensure that you <br> are in a secure and quiet location without interruptions. <br> This transmission contains classified information and <br> can only be played once.`;
                 document.getElementById('audioSection').style.display = "block";
             } else {
                 errorMessage.classList.remove('hidden');
