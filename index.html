@@ -19,6 +19,20 @@
             margin-top: 300px;  /* Keep this as it is */
         }
 
+@media (max-width: 600px) { /* Adjust for smaller screens */
+    #logo {
+        position: relative; /* Maintain relative positioning */
+        top: 10px;          /* Adjust position */
+        margin-right: 0;    /* Remove extra margin to avoid overlap */
+        width: 70px;        /* Resize the logo */
+    }
+
+    h1 {
+        font-size: 18px;    /* Reduce heading size for smaller screens */
+    }
+}
+
+
         #audioSection {
             display: none;
             margin-top: 50px;
@@ -81,7 +95,7 @@
             left: 0;
             width: 100px; /* Adjust the size of the logo */
             height: auto;
-            margin-right: 600px; /* Move logo slightly left by using negative margin */
+            margin-right: 400px; /* Move logo slightly left by using negative margin */
         }
     </style>
 </head>
