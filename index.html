@@ -10,28 +10,51 @@
             background-color: black;
             color: white;
             text-align: center;
-            margin: 0;              /* Remove any margins from the body */
-            padding: 0;             /* Remove padding from the body */
+            margin: 0;
+            padding: 0;
             position: relative;
         }
 
         #loginSection {
-            margin-top: 200px;  /* Keep this as it is */
+            margin-top: 200px;
         }
 
-@media (max-width: 600px) { /* Adjust for smaller screens */
-    #logo {
-        position: relative; /* Maintain relative positioning */
-        top: 10px;          /* Adjust position */
-        margin-right: 0;    /* Remove extra margin to avoid overlap */
-        width: 70px;        /* Resize the logo */
-    }
+        @media (max-width: 600px) { /* Adjust for smaller screens */
+            #logo {
+                position: relative;
+                top: 10px;
+                margin-right: 0;
+                width: 70px; /* Resize the logo */
+                height: auto;
+            }
 
-    h1 {
-        font-size: 18px;    /* Reduce heading size for smaller screens */
-    }
-}
+            h1 {
+                font-size: 22px; /* Reduce heading size for smaller screens */
+                margin-top: 10px; /* Adjust spacing for small screens */
+            }
 
+            #loginSection {
+                margin-top: 120px; /* Reduce margin to fit better on small screens */
+            }
+
+            input, button {
+                font-size: 14px;  /* Adjust button and input font size for better readability */
+                padding: 8px;
+                width: 90%;  /* Make inputs and buttons responsive to screen size */
+            }
+
+            #errorMessage {
+                font-size: 14px;  /* Reduce font size of error message */
+            }
+
+            #greetingSection {
+                margin-top: 30px;  /* Reduced margin to bring it closer */
+            }
+
+            #audioSection button {
+                font-size: 16px;
+            }
+        }
 
         #audioSection {
             display: none;
@@ -44,15 +67,15 @@
         }
 
         #greetingSection {
-            margin-top: 200px;  /* Keep this as it is */
+            margin-top: 200px;
             line-height: 1.5;
         }
 
         h1 {
-            margin-top: -50px;  /* Move the header upwards */
-            text-align: center; /* Center the header horizontally */
-            padding: 0;         /* Ensure no padding is applied */
-            margin-bottom: 10px; /* Optionally add space below the header */
+            margin-top: -50px;
+            text-align: center;
+            padding: 0;
+            margin-bottom: 10px;
         }
 
         .hidden {
@@ -93,9 +116,9 @@
             position: relative;
             top: 22px;
             left: 0;
-            width: 100px; /* Adjust the size of the logo */
+            width: 100px;
             height: auto;
-            margin-right: 400px; /* Move logo slightly left by using negative margin */
+            margin-right: 400px;
         }
     </style>
 </head>
@@ -104,8 +127,6 @@
     <img id="logo" src="AgencyLogoBlack.jpg" alt="Agent Logo" />
 
     <h1 style="word-spacing: 4px;">TIA Agent Portal</h1>
-
-
 
     <div id="loginSection">
         <p>Please enter your Agent ID below to access your message:</p>
@@ -124,11 +145,11 @@
     <script>
         const agentData = {
             "4769": "Dimitri",
-	    "5082": "Anthe",
-	    "1024": "Christo",
-	    "1892": "Lena", 
-	    "7041": "Andriana",
-	    "4412": "Glenn"
+            "5082": "Anthe",
+            "1024": "Christo",
+            "1892": "Lena", 
+            "7041": "Andriana",
+            "4412": "Glenn"
         };
 
         function validateAgent() {
