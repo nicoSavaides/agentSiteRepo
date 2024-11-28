@@ -149,7 +149,18 @@
             "1024": "Christo",
             "1892": "Lena", 
             "7041": "Andriana",
-            "4412": "Glenn"
+            "4412": "Glenn",
+   	    "8438": "Sawyer",
+            "3450": "Matt",
+            "1447": "Sonya",
+            "9501": "Kenny", 
+            "2321": "Spyro",
+  	    "3769": "Eleni",
+   	    "4191": "Marissa",
+            "5006": "Ryan",
+   	    "4702": "Peter",
+            "5187": "Brent"
+           
         };
 
         function validateAgent() {
@@ -163,7 +174,7 @@
                 errorMessage.classList.add('hidden');
                 loginSection.classList.add('hidden');
                 greetingSection.classList.remove('hidden');
-                greetingMessage.innerHTML = `Hello Agent ${agentData[agentId]}. Before proceeding, ensure <br> that you are in a secure and quiet location without <br> interruptions. This transmission contains classified <br> information and can only be played once.`;
+                greetingMessage.innerHTML = `Hello, Agent ${agentData[agentId]}. Before proceeding, ensure <br> that you are in a secure and quiet location without <br> interruptions. This transmission contains classified <br> information and can only be played once.`;
                 document.getElementById('audioSection').style.display = "block";
             } else {
                 errorMessage.classList.remove('hidden');
