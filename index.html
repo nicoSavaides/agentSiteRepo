@@ -138,7 +138,7 @@
         <p id="greetingMessage"></p>
         <div id="audioSection">
             <button onclick="playAudio()" aria-label="Play Mission Briefing Audio">Play Audio</button>
-            <audio id="newAgentAudio" src="newAgentAudio.wav"></audio>
+            <audio id="newNewAgentAudio" src="newNewAgentAudio.wav"></audio>
         </div>
     </div>
 
@@ -182,7 +182,7 @@
         }
 
         function playAudio() {
-            const audio = document.getElementById('newAgentAudio');
+            const audio = document.getElementById('newNewAgentAudio');
             const button = document.querySelector('#audioSection button');
             
             // Play the audio
@@ -198,7 +198,7 @@
             };
         }
 
-        const audio = document.getElementById('agentAudio');
+        const audio = document.getElementById('newNewAgentAudio');
         audio.onerror = () => alert("Failed to load the audio. Please check your file path or format.");
     </script>
 </body>
